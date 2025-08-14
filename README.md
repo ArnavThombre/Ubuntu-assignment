@@ -153,8 +153,11 @@ _start:
     mov eax, 1
     xor ebx, ebx
     int 0x80
-#Implementation of Basic Arithmetic Operations on 8086 Microprocessor for 8-bit Hex
-Numbers:
+
+   
+#code for Implementation of Basic Arithmetic Operations on 8086 Microprocessor for 8-bit Hex
+Numbers
+
 section .data
 
 result db 0 
