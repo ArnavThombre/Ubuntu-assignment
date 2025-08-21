@@ -191,3 +191,14 @@ _start:
 	mov ax , 30FAH
 	MOV bx , 595BH
 	add ax, bx
+
+
+#multiplication of 8 bit code:
+global _start
+section .text
+
+_start:
+    mov al, 10     
+    mov bl, 100     
+    mul bl
+
