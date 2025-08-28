@@ -239,41 +239,36 @@ _start:
     mov eax,1
     mov ebx,0
     int 80h
+	
+# Summing an array of numbers and displaying the result in ASCII
 
- # Summing an array of numbers and displaying the result in ASCII
-
- what is the title of this code ? section .text
+section .text
 global _start
 
 _start:
-    mov eax, x
-    mov ebx, 0
+    mov esi, x
     mov ecx, 5
+    xor eax, eax
 
-top:
-    add bl, [eax]
-    add eax, 1
-    loop top
+sum_loop:
+    movzx ebx, byte [esi]
+    add al, bl
+    inc esi
+    loop sum_loop
 
-done:
-    mov al, bl
     aam
     add ah, '0'
     add al, '0'
+
     mov [sum], ah
     mov [sum+1], al
+    mov byte [sum+2], 0xA
 
 display:
-    mov edx, 2
+    mov edx, 3
     mov ecx, sum
     mov ebx, 1
     mov eax, 4
-    int 0x80
-
-    mov eax, 4
-    mov ebx, 1
-    mov ecx, newline    
-    mov edx, 1
     int 0x80
 
     mov eax, 1
@@ -281,14 +276,9 @@ display:
 
 section .data
 x:
-db 1
-db 2
-db 5
-db 1
-db 2
-
-newline db 10
-sum db 0, 0
+    db 1, 2, 5, 1, 2
+sum:
+    db 0, 0, 0
 
 # Array Addition of 8 bit numbers using ASM
 
@@ -329,4 +319,5 @@ x:
     db 2
 
 sum:
+    db 0 , 0xa
 
